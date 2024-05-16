@@ -23,14 +23,14 @@ public class ClientHttpTest {
     @Test
     public void getAvailableAnimationsTest() {
         var response = mHttpClient.getAvailableAnimations(false);
-        System.out.println(response);
         Assertions.assertNotNull(response);
+        Assertions.assertEquals(response.getStatusText(), "OK");
     }
 
     @Test
     public void getAvailableHandlersTest() {
         var response = mHttpClient.getAvailableHandlers();
-        System.out.println(response);
         Assertions.assertNotNull(response);
+        Assertions.assertEquals(response.getStatusText(), "OK");
     }
 }
