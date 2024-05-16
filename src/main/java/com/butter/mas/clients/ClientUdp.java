@@ -2,9 +2,6 @@ package com.butter.mas.clients;
 
 /**
  * Butter MAS UDP client API
- *
- * @class ClientUdp
- * @extends Client
  */
 public class ClientUdp extends Client {
 

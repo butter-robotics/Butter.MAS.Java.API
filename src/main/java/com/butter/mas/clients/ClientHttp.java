@@ -2,9 +2,6 @@ package com.butter.mas.clients;
 
 /**
  * Butter MAS HTTP client API
- *
- * @class ClientHttp
- * @extends Client
  */
 public class ClientHttp extends Client {
 

@@ -2,8 +2,6 @@ package com.butter.mas.packets;
 
 /**
  * Packet factory for different types of protocols
- *
- * @class PacketFactory
  */
 public class PacketFactory {
 

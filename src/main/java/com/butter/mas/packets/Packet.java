@@ -4,8 +4,6 @@ import com.butter.mas.data.*;
 
 /**
  * Represents an abstract data packet
- *
- * @class Packet
  */
 public abstract class Packet {
     protected String mIp;

@@ -5,9 +5,6 @@ import com.butter.mas.data.Response;
 
 /**
  * Represents a TCP data packet
- *
- * @class PacketTcp
- * @extends Packet
  */
 public class PacketTcp extends Packet {
     /**

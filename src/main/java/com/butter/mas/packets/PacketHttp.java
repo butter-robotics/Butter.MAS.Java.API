@@ -9,9 +9,6 @@ import java.util.Scanner;
 
 /**
  * Represents a HTTP data packet
- *
- * @class PacketHttp
- * @extends Packet
  */
 public class PacketHttp extends Packet {
     /**

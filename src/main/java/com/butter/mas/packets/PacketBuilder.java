@@ -7,8 +7,6 @@ import java.util.Map;
 
 /**
  * Builds a command packet using the builder design pattern
- *
- * @class PacketBuilder
  */
 public class PacketBuilder {
     private final String mIp;

@@ -2,8 +2,6 @@ package com.butter.mas.clients;
 
 /**
  * Client factory for different types of protocols
- *
- * @class ClientFactory
  */
 public class ClientFactory {
 
