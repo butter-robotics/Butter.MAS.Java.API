@@ -28,9 +28,7 @@ public abstract class Packet {
      *
      * @param timeout packet timeout (optional)
      */
-    public Response send(Integer timeout) {
-        throw new UnsupportedOperationException("Not Implemented");
-    }
+    public abstract Response send(int timeout);
 
     /**
      * Generates structured response
