@@ -40,4 +40,13 @@ public class ResponseData {
     public void setExecuted(Boolean executed) {
         this.mExecuted = executed;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseData{" +
+                "mRequest=" + mRequest +
+                ", mResponse=" + mResponse +
+                ", mExecuted=" + mExecuted +
+                '}';
+    }
 }

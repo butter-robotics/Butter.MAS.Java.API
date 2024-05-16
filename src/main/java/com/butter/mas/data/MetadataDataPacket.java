@@ -63,4 +63,15 @@ public class MetadataDataPacket {
     void setDuration(long duration) {
         this.mDuration = duration;
     }
+
+    @Override
+    public String toString() {
+        return "MetadataDataPacket{" +
+                "mHandler='" + mHandler + '\'' +
+                ", mException='" + mException + '\'' +
+                ", mAsynchronous=" + mAsynchronous +
+                ", mTimestamp=" + mTimestamp +
+                ", mDuration=" + mDuration +
+                '}';
+    }
 }

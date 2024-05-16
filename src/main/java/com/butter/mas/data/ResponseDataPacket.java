@@ -37,4 +37,13 @@ public class ResponseDataPacket {
     public void setMetadata(MetadataDataPacket metadata) {
         this.mMetadata = metadata;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseDataPacket{" +
+                "mStatus='" + mStatus + '\'' +
+                ", mData=" + mData +
+                ", mMetadata=" + mMetadata +
+                '}';
+    }
 }

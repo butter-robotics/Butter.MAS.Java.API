@@ -29,4 +29,12 @@ public class RequestDataPacket {
     public void setParameters(List<String> parameters) {
         this.mParameters = parameters;
     }
+
+    @Override
+    public String toString() {
+        return "RequestDataPacket{" +
+                "mQuery='" + mQuery + '\'' +
+                ", mParameters=" + mParameters +
+                '}';
+    }
 }

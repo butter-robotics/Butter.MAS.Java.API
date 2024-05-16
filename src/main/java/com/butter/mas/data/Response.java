@@ -36,4 +36,13 @@ public class Response {
     public void setStatusText(String statusText) {
         this.mStatusText = statusText;
     }
+
+    @Override
+    public String toString() {
+        return "Response{" +
+                "mStatusText='" + mStatusText + '\'' +
+                ", mData=" + mData +
+                ", mStatus=" + mStatus +
+                '}';
+    }
 }
