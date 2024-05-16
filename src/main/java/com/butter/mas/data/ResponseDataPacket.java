@@ -1,8 +1,18 @@
 package com.butter.mas.data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ResponseDataPacket {
+    @SerializedName("id")
+    private String mId;
+    
+    @SerializedName("status")
     private String mStatus;
+
+    @SerializedName("data")
     private Object mData; // Use Object to accommodate both List<ResponseDataPacket> and String
+
+    @SerializedName("metadata")
     private MetadataDataPacket mMetadata;
 
     public ResponseDataPacket(String status, Object data, MetadataDataPacket metadata) {

@@ -44,7 +44,7 @@ public class PacketHttp extends Packet {
             String responseBody = scanner.useDelimiter("\\A").next();
             scanner.close();
 
-            response = ResponseParser.parse(responseBody);
+            response = ResponseParser.parse(responseBody, status);
 
         } catch (IOException e) {
             System.err.println("Warning: request failed.\n" + e + "\n");

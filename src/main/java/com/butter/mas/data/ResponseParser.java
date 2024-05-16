@@ -10,7 +10,10 @@ public class ResponseParser {
      * @param response response JSON string
      * @return Response object
      */
-    public static Response parse(String response) {
-        return mGsonParser.fromJson(response, Response.class);
+    public static Response parse(String response, int status) {
+        String statusString = status >= 200 && status < 400 ? "OK" : "Failed";
+        ResponseData responseData = mGsonParser.fromJson(response, ResponseData.class);
+
+        return new Response(responseData, statusString, status);
     }
 }

@@ -1,11 +1,18 @@
 package com.butter.mas.data;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * This class should be updated together with @class{ResponseBuilder}
  */
 public class ResponseData {
+    @SerializedName("request")
     private RequestDataPacket mRequest;
+
+    @SerializedName("response")
     private ResponseDataPacket mResponse;
+
+    @SerializedName("executed")
     private Boolean mExecuted;
 
     public ResponseData(RequestDataPacket request, ResponseDataPacket response, Boolean executed) {

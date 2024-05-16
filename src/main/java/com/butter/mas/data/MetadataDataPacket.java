@@ -1,13 +1,22 @@
 package com.butter.mas.data;
 
+import com.google.gson.annotations.SerializedName;
 import org.jetbrains.annotations.Nullable;
 
 public class MetadataDataPacket {
-
+    @SerializedName("handler")
     String mHandler;
+
+    @SerializedName("exception")
     String mException;
+
+    @SerializedName("asynchronous")
     boolean mAsynchronous;
+
+    @SerializedName("timestamp")
     long mTimestamp;
+
+    @SerializedName("duration")
     long mDuration;
 
     public MetadataDataPacket(String handler, String exception, boolean asynchronous, long timestamp, long duration) {

@@ -1,9 +1,14 @@
 package com.butter.mas.data;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class RequestDataPacket {
+    @SerializedName("query")
     private String mQuery;
+
+    @SerializedName("parameters")
     private List<String> mParameters;
 
     public RequestDataPacket(String query, List<String> parameters) {
