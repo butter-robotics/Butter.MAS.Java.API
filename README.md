@@ -9,8 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installation
 
-
-Add thefollowing dependencie to your Gradle configuration:
+Add the following dependencie to your Gradle configuration:
 ```gradle
 dependencies {
     implementation group: 'com.butter.mas.api', name: 'mas.api', version: '2.0.0'
