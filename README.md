@@ -30,7 +30,7 @@ repositories {
 ## Usage
 
 ```java
-ClientHttp mHttpClient= new ClientHttp("<insert robot ip here>");
+ClientHttp butterHttpClient= new ClientHttp("<insert robot ip here>");
 
-var response = mHttpClient.getAvailableAnimations(false);
+var response = butterHttpClient.getAvailableAnimations(false);
 ```
