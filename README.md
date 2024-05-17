@@ -7,6 +7,10 @@ HTTP client java API for Butter MAS platform.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
+
+You will need to install JDK17+ in order to use this software
+
 ### Installation
 
 Add the following dependencie to your Gradle configuration:
