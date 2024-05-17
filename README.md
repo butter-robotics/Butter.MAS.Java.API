@@ -23,7 +23,7 @@ If you are downloadind the API into a local repository, make sure to include it 
 repositories {
     mavenCentral()
     maven {
-        url "path/to/downloaded/release"
+        url "path/to/unzipped/release"
     }
 }
 ```
