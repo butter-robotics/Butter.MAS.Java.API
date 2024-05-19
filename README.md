@@ -13,10 +13,10 @@ You will need to install JDK17+ in order to use this software
 
 ### Installation
 
-Add the following dependencie to your Gradle configuration:
+Add the following dependencie to your Gradle configuration and reload gradle:
 ```gradle
 dependencies {
-    implementation group: 'com.butter.mas.api', name: 'mas.api', version: '2.0.0'
+    implementation group: 'com.butter.mas.api', name: 'mas.api', version: '${api_version}'
 }
 ```
 
@@ -34,7 +34,12 @@ repositories {
 ## Usage
 
 ```java
-ClientHttp butterHttpClient= new ClientHttp("<insert robot ip here>");
+ClientHttp butterHttpClient= new ClientHttp("insert.robot.ip.here");
 
 var response = butterHttpClient.getAvailableAnimations(false);
 ```
+
+<!--
+## Documentation
+- 👨🏼‍💻 [API]((https://butterrobotics.com/#/library/documentation/mas_java_api),
+- 🖋  [Licence](https://github.com/butter-robotics/Butter.MAS.JavaAPI/blob/master/LICENSE) -->
