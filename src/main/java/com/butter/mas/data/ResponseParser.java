@@ -11,7 +11,8 @@ public class ResponseParser {
      * @return Response object
      */
     public static Response parse(String response, int status) {
-        String statusString = status >= 200 && status < 400 ? "OK" : "Failed";
+        String statusString = status < 0 ? "UNKNOWN" :
+                status >= 200 && status < 400 ? "OK" : "Failed";
         ResponseData responseData = mGsonParser.fromJson(response, ResponseData.class);
 
         return new Response(responseData, statusString, status);

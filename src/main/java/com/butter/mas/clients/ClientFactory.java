@@ -9,6 +9,17 @@ public class ClientFactory {
      * Creates new client
      *
      * @param ip robot IP
+     * @param protocol communication protocol
+     * @return requested client
+     */
+    public Object getClient(String ip, String protocol) {
+        return getClient(ip, null, protocol);
+    }
+
+    /**
+     * Creates new client
+     *
+     * @param ip robot IP
      * @param port robot port
      * @param protocol communication protocol
      * @return requested client
