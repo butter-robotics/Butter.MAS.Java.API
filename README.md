@@ -41,5 +41,5 @@ var response = butterHttpClient.getAvailableAnimations(false);
 
 <!--
 ## Documentation
-- 👨🏼‍💻 [API]((https://butterrobotics.com/#/library/documentation/mas_java_api),
+- 👨🏼‍💻 [API](https://butterrobotics.com/#/library/documentation/mas_java_api),
 - 🖋  [Licence](https://github.com/butter-robotics/Butter.MAS.JavaAPI/blob/master/LICENSE) -->
