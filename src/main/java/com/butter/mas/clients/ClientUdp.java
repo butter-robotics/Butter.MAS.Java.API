@@ -17,10 +17,10 @@ public class ClientUdp extends Client {
     }
 
     public ClientUdp(String ip) {
-        this(ip, 3003, "tcp");
+        this(ip, 3030, "udp");
     }
 
     public ClientUdp(String ip, int port) {
-        this(ip, port, "tcp");
+        this(ip, port, "udp");
     }
 }
