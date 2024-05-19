@@ -12,7 +12,7 @@ public class ClientFactory {
      * @param protocol communication protocol
      * @return requested client
      */
-    public Object getClient(String ip, String protocol) {
+    public Client getClient(String ip, String protocol) {
         return getClient(ip, null, protocol);
     }
 
@@ -24,7 +24,7 @@ public class ClientFactory {
      * @param protocol communication protocol
      * @return requested client
      */
-    public Object getClient(String ip, Integer port, String protocol) {
+    public Client getClient(String ip, Integer port, String protocol) {
         if (protocol == null || protocol.equals("http")) {
             return (port != null) ? new ClientHttp(ip, port) : new ClientHttp(ip);
         } else if (protocol.equals("tcp")) {
@@ -44,7 +44,7 @@ public class ClientFactory {
      * @param protocol communication protocol
      * @return implementation of Client abstract class
      */
-    public Class<?> getClientClass(String protocol) {
+    public <T extends Client> Class<?> getClientClass(String protocol) {
         if (protocol == null || protocol.equals("http")) {
             return ClientHttp.class;
         } else if (protocol.equals("tcp")) {
