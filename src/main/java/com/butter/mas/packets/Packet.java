@@ -27,6 +27,7 @@ public abstract class Packet {
      * Send packet abstract method
      *
      * @param timeout packet timeout (optional)
+     * @return Response response
      */
     public abstract Response send(int timeout);
 

@@ -8,6 +8,7 @@ public class ResponseParser {
     /**
      * Parse response string into Response object
      * @param response response JSON string
+     * @param status response status code
      * @return Response object
      */
     public static Response parse(String response, int status) {

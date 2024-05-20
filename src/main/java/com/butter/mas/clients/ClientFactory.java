@@ -42,6 +42,7 @@ public class ClientFactory {
      * Get client class
      *
      * @param protocol communication protocol
+     * @param <T> generic class type Client
      * @return implementation of Client abstract class
      */
     public <T extends Client> Class<?> getClientClass(String protocol) {

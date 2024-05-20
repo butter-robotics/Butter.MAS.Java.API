@@ -28,6 +28,7 @@ public class PacketHttp extends Packet {
      * @param timeout packet timeout (optional)
      * @return response containing the response
      */
+    @Override
     public Response send(int timeout) {
         HttpURLConnection connection = null;
         Response response = null;
