@@ -13,15 +13,16 @@ You will need to install JDK17+ in order to use this software
 
 ### Installation
 
-Add the following dependencie to your Gradle configuration and reload gradle:
+Add the following dependency to your Gradle configuration and reload gradle:
 ```gradle
 dependencies {
-    implementation group: 'com.butter.mas.api', name: 'mas.api', version: '${api_version}'
+    implementation group: 'com.butter.mas', name: 'mas-api', version: '${api_version}'
 }
 ```
 
 ### Local Repository
-If you are downloadind the API into a local repository, make sure to include it in your gradle configuration
+
+If you are downloading the API into a local repository, make sure to include it in your gradle configuration
 ```gradle
 repositories {
     mavenCentral()
@@ -30,6 +31,7 @@ repositories {
     }
 }
 ```
+You can find the latest `MAS-API.zip` in the [releases section](https://github.com/butter-robotics/Butter.MAS.Java.API/releases).
 
 ## Usage
 
