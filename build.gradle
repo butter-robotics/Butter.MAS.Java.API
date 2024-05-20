@@ -1,10 +1,11 @@
 plugins {
     id 'java'
+    id 'signing'
     id 'maven-publish'
     id 'org.jetbrains.dokka' version '1.9.20'
 }
 
-group = 'com.butter.mas.api'
+group = 'com.butter.mas'
 version = '2.0-SNAPSHOT'
 
 repositories {
@@ -27,6 +28,10 @@ java {
     withSourcesJar()
 }
 
+javadoc {
+    options.addBooleanOption('html5', true)
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -42,7 +47,7 @@ publishing {
             }
             pom {
                 name = 'Butter MAS Java API'
-                description = 'API for Butter MAS platform'
+                description = 'Java API for Butter Robotics MAS platform'
                 url = 'http://www.butterrobotics.com/'
                 licenses {
                     license {
@@ -58,7 +63,8 @@ publishing {
                     }
                 }
                 scm {
-                    url = 'https://github.com/butter-robotics/Butter.MAS.Java.API.git'
+                    url = 'https://github.com/butter-robotics/Butter.MAS.Java.API'
+                    connection = 'scm:git:git://github.com/butter-robotics/Butter.MAS.Java.API.git'
                 }
             }
         }
@@ -72,3 +78,7 @@ publishing {
         }
     }
 }
+
+//signing {
+//    sign publishing.publications.mavenJava
+//}
