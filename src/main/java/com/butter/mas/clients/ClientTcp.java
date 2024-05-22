@@ -9,18 +9,18 @@ public class ClientTcp extends Client {
      * Creates an instance of TcpClient.
      *
      * @param ip        robot ip
-     * @param port      robot port
-     * @param protocol  communication protocol
      */
-    public ClientTcp(String ip, int port, String protocol) {
-        super(ip, port, protocol);
-    }
-
     public ClientTcp(String ip) {
-        this(ip, 3003, "tcp");
+        this(ip, 3003);
     }
 
+    /**
+     * Creates an instance of TcpClient.
+     *
+     * @param ip        robot ip
+     * @param port      robot port
+     */
     public ClientTcp(String ip, int port) {
-        this(ip, port, "tcp");
+        super(ip, port, "tcp");
     }
 }

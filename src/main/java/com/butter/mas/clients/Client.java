@@ -20,15 +20,11 @@ public class Client {
      * @param port     Port number, defaults to 3000.
      * @param protocol Protocol, defaults to "http".
      */
-    public Client(String ip, int port, String protocol) {
+    protected Client(String ip, int port, String protocol) {
         this.mTimeout = 40;
         this.mIp = ip;
         this.mPort = (port != 0) ? port : 3000;
         this.mProtocol = (protocol != null) ? protocol : "http";
-    }
-
-    public Client(String ip) {
-        this(ip, 3000, "http");
     }
 
     /**
