@@ -49,6 +49,24 @@ public class Client {
     }
 
     /**
+     * Validate robot connection and assert link quality
+     * This validation assets minimal lower bound link quality, and do not take worst case scenarios into account
+     * ICMP protocol is assumed to be supported and enabled on the machine network
+     *
+     * @param clientIp this machine ip address
+     * @return Response whether this machine is reachable within the defined link parameter
+     */
+    public Response assertLinkQuality(String clientIp) {
+        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+                .addCommand("network")
+                .addParameter("ping")
+                .addKeyValuePair("ip", clientIp)
+                .addKeyValuePair("timeout", mTimeout)
+                .build();
+        return packet.send(mTimeout);
+    }
+
+    /**
      * Get available robot handlers
      *
      * @return Response containing all the available robot handlers.
