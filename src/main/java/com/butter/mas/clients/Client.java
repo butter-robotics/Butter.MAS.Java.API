@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Client {
     private int mTimeout;
+    private String mTarget;
     private final String mIp;
     private final int mPort;
     private final String mProtocol;
@@ -22,6 +23,7 @@ public class Client {
      */
     protected Client(String ip, int port, String protocol) {
         this.mTimeout = 40;
+        this.mTarget = PacketBuilder.ANY_TARGET;
         this.mIp = ip;
         this.mPort = (port != 0) ? port : 3000;
         this.mProtocol = (protocol != null) ? protocol : "http";
@@ -49,6 +51,27 @@ public class Client {
     }
 
     /**
+     * Get robot character target
+     *
+     * @return Robot character target.
+     */
+    public String getTarget() {
+        return mTarget;
+    }
+
+    /**
+     * Set robot character target
+     *
+     * @param target Robot character target.
+     */
+    public void setTarget(String target) {
+        if (target.isEmpty()) {
+            throw new IllegalArgumentException("Robot character target most be a non empty string");
+        }
+        this.mTarget = target;
+    }
+
+    /**
      * Validate robot connection and assert link quality
      * This validation assets minimal lower bound link quality, and do not take worst case scenarios into account
      * ICMP protocol is assumed to be supported and enabled on the machine network
@@ -57,7 +80,7 @@ public class Client {
      * @return Response whether this machine is reachable within the defined link parameter
      */
     public Response assertLinkQuality(String clientIp) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("network")
                 .addParameter("ping")
                 .addKeyValuePair("ip", clientIp)
@@ -72,7 +95,7 @@ public class Client {
      * @return Response containing all the available robot handlers.
      */
     public Response getAvailableHandlers() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol).addCommand("list").build();
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol).addCommand("list").build();
         return packet.send(mTimeout);
     }
 
@@ -83,7 +106,7 @@ public class Client {
      * @return Response containing all the available (loaded) robot animations.
      */
     public Response getAvailableAnimations(boolean reload) {
-        PacketBuilder builder = new PacketBuilder(mIp, mPort, mProtocol).addCommand("animate");
+        PacketBuilder builder = new PacketBuilder(mIp, mPort, mTarget, mProtocol).addCommand("animate");
 
         if (reload) {
             builder.addParameter("reload");
@@ -100,7 +123,7 @@ public class Client {
      * @return Response containing all the available (loaded) robot sound assets.
      */
     public Response getAvailableSounds(boolean reload) {
-        PacketBuilder builder = new PacketBuilder(mIp, mPort, mProtocol).addCommand("audio");
+        PacketBuilder builder = new PacketBuilder(mIp, mPort, mTarget, mProtocol).addCommand("audio");
 
         if (reload) {
             builder.addParameter("reload");
@@ -118,7 +141,7 @@ public class Client {
      * @return Response containing all the available motor registers.
      */
     public Response getAvailableMotorRegisters(String motorName, boolean readableOnly) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("dxl")
                 .addArguments("get", motorName)
                 .addParameter("list")
@@ -136,7 +159,7 @@ public class Client {
      * @return Response containing register value.
      */
     public Response getMotorRegister(String motorName, String registerName) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("dxl")
                 .addArguments("get", motorName, registerName)
                 .build();
@@ -152,7 +175,7 @@ public class Client {
      * @return Response containing register range value.
      */
     public Response getMotorRegisterRange(String motorName, String registerName) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("dxl")
                 .addArguments("get", motorName, registerName)
                 .addParameter("range")
@@ -170,7 +193,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response setMotorRegister(String motorName, String registerName, String value) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("dxl")
                 .addArguments("set", motorName, registerName, value)
                 .build();
@@ -189,7 +212,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response moveMotorToPosition(String motorName, int position, Integer velocity, Integer acceleration, RotationUnits units) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("move")
                 .addArguments(motorName, position)
                 .addKeyValuePair("velocity", velocity)
@@ -210,7 +233,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response moveMotorInTime(String motorName, int position, int duration, RotationUnits units) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("move")
                 .addArguments(motorName, position)
                 .addKeyValuePair("duration", duration)
@@ -231,7 +254,7 @@ public class Client {
      */
     public Response moveMotorInDirection(String motorName, String direction, Integer velocity, RotationUnits units) {
         int directionCode = direction.equalsIgnoreCase("right") ? 1 : direction.equalsIgnoreCase("left") ? -1 : 0;
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("move")
                 .addArguments(motorName, directionCode)
                 .addKeyValuePair("velocity", velocity)
@@ -263,7 +286,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response playAnimation(String animationName, boolean lenient, boolean relative) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addArgument(animationName)
                 .addKeyValuePair("lenient", lenient)
@@ -281,12 +304,12 @@ public class Client {
      */
     public Response observeAnimation(String animationName) {
         Packet packet = (animationName != null)
-                ? new PacketBuilder(mIp, mPort, mProtocol)
+                ? new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addArgument(animationName)
                 .addParameter("status")
                 .build()
-                : new PacketBuilder(mIp, mPort, mProtocol)
+                : new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addParameter("status")
                 .build();
@@ -300,7 +323,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response pauseAnimation() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addParameter("pause")
                 .build();
@@ -314,7 +337,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response resumeAnimation() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addParameter("resume")
                 .build();
@@ -328,7 +351,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response stopAnimation() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addParameter("stop")
                 .build();
@@ -342,7 +365,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response clearAnimation() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("animate")
                 .addParameter("clear")
                 .build();
@@ -357,7 +380,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response playAudio(String fileName) {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("audio")
                 .addArgument(fileName)
                 .build();
@@ -371,7 +394,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response pauseAudio() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("audio")
                 .addParameter("pause")
                 .build();
@@ -385,7 +408,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response resumeAudio() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("audio")
                 .addParameter("resume")
                 .build();
@@ -399,7 +422,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response stopAudio() {
-        Packet packet = new PacketBuilder(mIp, mPort, mProtocol)
+        Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("audio")
                 .addParameter("stop")
                 .build();

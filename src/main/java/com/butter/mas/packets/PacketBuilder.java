@@ -9,8 +9,10 @@ import java.util.Map;
  * Builds a command packet using the builder design pattern
  */
 public class PacketBuilder {
+    public static String ANY_TARGET = "*";
     private final String mIp;
     private final int mPort;
+    private final String mTarget;
     private final Class<?> mPacket;
 
     private String mCommand;
@@ -25,9 +27,10 @@ public class PacketBuilder {
      * @param port     robot port
      * @param protocol communication protocol
      */
-    public PacketBuilder(String ip, int port, String protocol) {
+    public PacketBuilder(String ip, int port, String target, String protocol) {
         this.mIp = ip;
         this.mPort = port;
+        this.mTarget = target;
 
         PacketFactory packetFactory = new PacketFactory();
         this.mPacket = packetFactory.getPacketClass(protocol);
@@ -165,7 +168,7 @@ public class PacketBuilder {
             query.append(String.join("&", keyValuePairs));
         }
 
-        String uri = "api/robots/any/command/" + query.toString().replaceAll("&+$", "");
+        String uri = String.format("api/robots/%s/command/%s", this.mTarget, query).replaceAll("&+$", "");
 
         try {
             return (Packet)this.mPacket.getConstructor(String.class, int.class, String.class)
