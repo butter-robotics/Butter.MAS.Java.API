@@ -16,7 +16,8 @@ You will need to install JDK17+ in order to use this software
 Add the following dependency to your Gradle configuration and reload gradle:
 ```gradle
 dependencies {
-    implementation group: 'com.butter.mas', name: 'mas-api', version: '${api_version}'
+    implementation group: 'com.butter.mas', name: 'mas-api', version: '${api_version}'          // 2.5.0
+    implementation group: 'com.google.code.gson', name: 'gson', version: '${gson_version_2}'    // 2.11.0
 }
 ```
 
@@ -35,10 +36,38 @@ You can find the latest `MAS-API.zip` in the [releases section](https://github.c
 
 ## Usage
 
+#### Native Java
 ```java
-ClientHttp butterHttpClient= new ClientHttp("insert.robot.ip.here");
+ClientHttp butterHttpClient = new ClientHttp("insert.robot.ip.here");
 
 var response = butterHttpClient.getAvailableAnimations(false);
+```
+
+#### Android Kotlin
+```kotlin
+val butterHttpClient = ClientHttp("insert.robot.ip.here")
+
+CoroutineScope(Dispatchers.IO).launch {
+    val response = butterHttpClient.getAvailableAnimations(false)
+}
+```
+
+In addition, you will have to make sure the app have sufficient permissions:
+
+AndroidManifest.xml
+```xml
+<manifest ... >
+    <uses-permission android:name="android.permission.INTERNET" />
+    ...
+</manifest>
+```
+
+res/xml/network_security_config.xml:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
 ```
 
 <!--
