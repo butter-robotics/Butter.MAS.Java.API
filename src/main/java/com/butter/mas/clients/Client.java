@@ -44,8 +44,8 @@ public class Client {
      * @param timeout Command execution timeout in milliseconds.
      */
     public void setTimeout(int timeout) {
-        if (timeout < 20 || timeout > 500) {
-            throw new IllegalArgumentException("Timeout must be an integer number in the range [20, 500]");
+        if (timeout < 20 || timeout > 2000) {
+            throw new IllegalArgumentException("Timeout must be an integer number in the range [20, 2000]");
         }
         this.mTimeout = timeout;
     }
