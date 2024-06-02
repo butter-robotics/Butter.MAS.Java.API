@@ -82,7 +82,7 @@ public class Client {
     public Response assertLinkQuality(String clientIp) {
         Packet packet = new PacketBuilder(mIp, mPort, mTarget, mProtocol)
                 .addCommand("network")
-                .addParameter("ping")
+                .addArgument("ping")
                 .addKeyValuePair("ip", clientIp)
                 .addKeyValuePair("timeout", mTimeout)
                 .build();
@@ -274,7 +274,7 @@ public class Client {
      * @return Response containing execution result.
      */
     public Response playSequence(List<String> animationSequence, boolean lenient, boolean relative) {
-        return this.playAnimation(String.join("", animationSequence).replaceAll("\\s+", ""), lenient, relative);
+        return this.playAnimation(String.join(",", animationSequence).replaceAll("\\s+", ""), lenient, relative);
     }
 
     /**

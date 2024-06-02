@@ -21,16 +21,23 @@ public class ClientHttpTest {
     }
 
     @Test
+    public void assertLinkQualityTest() {
+        var response = mHttpClient.assertLinkQuality("1.1.1.1");
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals("OK", response.getStatusText());
+    }
+
+    @Test
     public void getAvailableAnimationsTest() {
         var response = mHttpClient.getAvailableAnimations(false);
         Assertions.assertNotNull(response);
-        Assertions.assertEquals(response.getStatusText(), "OK");
+        Assertions.assertEquals("OK", response.getStatusText());
     }
 
     @Test
     public void getAvailableHandlersTest() {
         var response = mHttpClient.getAvailableHandlers();
         Assertions.assertNotNull(response);
-        Assertions.assertEquals(response.getStatusText(), "OK");
+        Assertions.assertEquals("OK", response.getStatusText());
     }
 }
