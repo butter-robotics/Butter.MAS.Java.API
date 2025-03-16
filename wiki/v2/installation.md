@@ -27,7 +27,7 @@ repositories {
     }
 }
 ```
-You can find the latest `MAS-API.zip` in the [releases section](https://github.com/butter-robotics/Butter.MAS.Java.API/releases).
+You can find the latest `MAS-API.zip` in the [releases section](https://github.com/butter-robotics/Butter.MAS.JavaAPI/releases).
 
 ## Usage
 
