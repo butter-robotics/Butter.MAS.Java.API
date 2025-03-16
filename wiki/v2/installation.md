@@ -9,7 +9,7 @@ You will need to install JDK17+ in order to use this software
 ## Installation
 
 Add the following dependency to your Gradle configuration and reload gradle:
-```gradle
+```groovy
 dependencies {
     implementation group: 'com.butter.mas', name: 'mas-api', version: '${api_version}'          // 2.5.0
     implementation group: 'com.google.code.gson', name: 'gson', version: '${gson_version_2}'    // 2.11.0
@@ -19,7 +19,7 @@ dependencies {
 ## Local Repository
 
 If you are downloading the API into a local repository, make sure to include it in your gradle configuration
-```gradle
+```groovy
 repositories {
     mavenCentral()
     maven {
