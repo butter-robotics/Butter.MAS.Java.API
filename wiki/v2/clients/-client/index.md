@@ -1,0 +1,44 @@
+//[Butter.MAS.JavaAPI](../../../index.md)/[com.butter.mas.clients](../index.md)/[Client](index.md)
+
+# Client
+
+open class [Client](index.md)
+
+#### Inheritors
+
+| |
+|---|
+| [ClientHttp](../-client-http/index.md) |
+| [ClientTcp](../-client-tcp/index.md) |
+| [ClientUdp](../-client-udp/index.md) |
+
+## Functions
+
+| Name | Summary |
+|---|---|
+| [assertLinkQuality](assert-link-quality.md) | [jvm]<br>open fun [assertLinkQuality](assert-link-quality.md)(clientIp: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Response](../../data/-response/index.md)<br>Validate robot connection and assert link quality This validation assets minimal lower bound link quality, and do not take worst case scenarios into account ICMP protocol is assumed to be supported and enabled on the machine network |
+| [clearAnimation](clear-animation.md) | [jvm]<br>open fun [clearAnimation](clear-animation.md)(): [Response](../../data/-response/index.md)<br>Clear animation queue (if present) |
+| [getAvailableAnimations](get-available-animations.md) | [jvm]<br>open fun [getAvailableAnimations](get-available-animations.md)(reload: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): [Response](../../data/-response/index.md)<br>Get available (loaded) robot animations |
+| [getAvailableHandlers](get-available-handlers.md) | [jvm]<br>open fun [getAvailableHandlers](get-available-handlers.md)(): [Response](../../data/-response/index.md)<br>Get available robot handlers |
+| [getAvailableMotorRegisters](get-available-motor-registers.md) | [jvm]<br>open fun [getAvailableMotorRegisters](get-available-motor-registers.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), readableOnly: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): [Response](../../data/-response/index.md)<br>Get all available motor registers (for Dynamixel motors only) |
+| [getAvailableSounds](get-available-sounds.md) | [jvm]<br>open fun [getAvailableSounds](get-available-sounds.md)(reload: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): [Response](../../data/-response/index.md)<br>Get available (loaded) robot sound assets |
+| [getMotorRegister](get-motor-register.md) | [jvm]<br>open fun [getMotorRegister](get-motor-register.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), registerName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Response](../../data/-response/index.md)<br>Get motor register value (for Dynamixel motors only) |
+| [getMotorRegisterRange](get-motor-register-range.md) | [jvm]<br>open fun [getMotorRegisterRange](get-motor-register-range.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), registerName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Response](../../data/-response/index.md)<br>Get motor register value range (for Dynamixel motors only) |
+| [getTarget](get-target.md) | [jvm]<br>open fun [getTarget](get-target.md)(): [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)<br>Get robot character target |
+| [getTimeout](get-timeout.md) | [jvm]<br>open fun [getTimeout](get-timeout.md)(): [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html)<br>Get command execution timeout (in milliseconds) |
+| [moveMotorInDirection](move-motor-in-direction.md) | [jvm]<br>open fun [moveMotorInDirection](move-motor-in-direction.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), direction: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), velocity: [Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html), units: [RotationUnits](../../data/-rotation-units/index.md)): [Response](../../data/-response/index.md)<br>Move motor to a certain direction (relative to the motor's current position) |
+| [moveMotorInTime](move-motor-in-time.md) | [jvm]<br>open fun [moveMotorInTime](move-motor-in-time.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), position: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), duration: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), units: [RotationUnits](../../data/-rotation-units/index.md)): [Response](../../data/-response/index.md)<br>Move motor to a certain position (relative to the motor's zero position) in fixed duration |
+| [moveMotorToPosition](move-motor-to-position.md) | [jvm]<br>open fun [moveMotorToPosition](move-motor-to-position.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), position: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html), velocity: [Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html), acceleration: [Integer](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html), units: [RotationUnits](../../data/-rotation-units/index.md)): [Response](../../data/-response/index.md)<br>Move motor to a certain position (relative to the motor's zero position) |
+| [observeAnimation](observe-animation.md) | [jvm]<br>open fun [observeAnimation](observe-animation.md)(animationName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Response](../../data/-response/index.md)<br>Observe animation status ['ANIMATING', 'QUEUED', 'STOPPED', 'PAUSED', 'IDLE'] |
+| [pauseAnimation](pause-animation.md) | [jvm]<br>open fun [pauseAnimation](pause-animation.md)(): [Response](../../data/-response/index.md)<br>Pause currently playing animation (if available) on the robot |
+| [pauseAudio](pause-audio.md) | [jvm]<br>open fun [pauseAudio](pause-audio.md)(): [Response](../../data/-response/index.md)<br>Pause current audio playback (if available) on the robot |
+| [playAnimation](play-animation.md) | [jvm]<br>open fun [playAnimation](play-animation.md)(animationName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), lenient: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html), relative: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): [Response](../../data/-response/index.md)<br>Play animation on the robot |
+| [playAudio](play-audio.md) | [jvm]<br>open fun [playAudio](play-audio.md)(fileName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Response](../../data/-response/index.md)<br>Play audio on the robot |
+| [playSequence](play-sequence.md) | [jvm]<br>open fun [playSequence](play-sequence.md)(animationSequence: [List](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)&lt;[String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)&gt;, lenient: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html), relative: [Boolean](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html)): [Response](../../data/-response/index.md)<br>Play animation sequence on the robot |
+| [resumeAnimation](resume-animation.md) | [jvm]<br>open fun [resumeAnimation](resume-animation.md)(): [Response](../../data/-response/index.md)<br>Resume currently paused animation (if available) on the robot |
+| [resumeAudio](resume-audio.md) | [jvm]<br>open fun [resumeAudio](resume-audio.md)(): [Response](../../data/-response/index.md)<br>Resume currently paused audio playback (if available) on the robot |
+| [setMotorRegister](set-motor-register.md) | [jvm]<br>open fun [setMotorRegister](set-motor-register.md)(motorName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), registerName: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html), value: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html)): [Response](../../data/-response/index.md)<br>Set motor register value (for Dynamixel motors only) |
+| [setTarget](set-target.md) | [jvm]<br>open fun [setTarget](set-target.md)(target: [String](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html))<br>Set robot character target |
+| [setTimeout](set-timeout.md) | [jvm]<br>open fun [setTimeout](set-timeout.md)(timeout: [Int](https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html))<br>Set time for the command execution |
+| [stopAnimation](stop-animation.md) | [jvm]<br>open fun [stopAnimation](stop-animation.md)(): [Response](../../data/-response/index.md)<br>Stop currently playing animation (if available) on the robot |
+| [stopAudio](stop-audio.md) | [jvm]<br>open fun [stopAudio](stop-audio.md)(): [Response](../../data/-response/index.md)<br>Stop current audio playback (if available) on the robot |

@@ -1,0 +1,58 @@
+---
+- label: Installation
+  data: installation.md
+- label: Documentation
+  data: documentation.md
+- label: API
+  items:
+  - label: Client Factory
+    data: clients/-client-factory/index.md
+  - label: HTTP Client
+    data: clients/-client-http/index.md
+  - label: TCP Client
+    data: clients/-client-tcp/index.md
+    disabled: true
+  - label: UDP Client
+    data: clients/-client-udp/index.md
+    disabled: true
+  - label: Client
+    data: clients/-client/index.md
+  - label: Response
+    items:
+    - label: Response
+      data: data/-response/index.md
+    - label: Response Data
+      data: data/-response-data/index.md
+    - label: Response Data Packet
+      data: data/-response-data-packet/index.md
+    - label: Request Data Packet
+      data: data/-request-data-packet/index.md
+    - label: Metadata Data Packet
+      data: data/-metadata-data-packet/index.md
+    - label: Response Parser
+      data: data/-response-parser/index.md
+  - label: Types
+    items:
+    - label: Response Status
+      data: data/-packet-response-status/index.md
+    - label: Result Status
+      data: data/-command-result-status/index.md
+    - label: Rotation Units
+      data: data/-rotation-units/index.md
+- label: Internal API
+  items:
+  - label: Packet Builder
+    data: packets/-packet-builder/index.md
+  - label: Packet Factory
+    data: packets/-packet-factory./index.md
+  - label: HTTP Packet
+    data: packets/-packet-http/index.md
+  - label: TCP Packet
+    data: packets/-packet-tcp/index.md
+    disabled: true
+  - label: UDP Packet
+    data: packets/-packet-udp/index.md
+    disabled: true
+  - label: Packet
+    data: packets/-packet/index.md
+...
